@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}Categories{% endblock %}
+{% block body %}
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-sm-12 col-md-6 text-primary">
+            <h1 class="text-center mt-4 pt-4 display-1 fw-bold"> Categories</h1>
+            {{ form(form) }}
+        </div>
+        <div class="text-center">
+            <h2>Toutes les catégories :</h2>
+            <ul>
+                {% for categorie in categories %}
+
+                <li>
+                    <a href="{{path('app_modifier-categorie', {'id':categorie.id})}} "><i class="bi bi-pencil-fill"></i></a>
+                    <a href="{{path('app_supprimer-categorie', {'id':categorie.id})}} "><i class="bi bi-trash-fill"></i></a>
+                    {{categorie.libelle}}
+                </li>
+
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
