@@ -7,6 +7,30 @@
 <div class="col-md-6 col-sm-10">
     <h1>Liste des Cafés</h1>
 
-    
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Désignation</th>
+                <th>Origine</th>
+                {# <th>Nom</th>
+                <th>Prix</th>
+                <th>Description</th> #}
+            </tr>
+        </thead>
+        <tbody>
+            {% for cafe in cafes %}
+            <tr>
+                <td>{{cafe.id}}</td>
+                <td>{{cafe.designation}}</td>
+                <td>{{cafe.origine}}</td>
+                {# <td>{{cafe.nom}}</td>
+                <td>{{cafe.prix}}</td>
+                <td>{{cafe.description}}</td> #}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
 </div>
 {% endblock %}

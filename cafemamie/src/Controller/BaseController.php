@@ -8,6 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Form\AjoutCafeType;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\TypeCafe;
+use App\Repository\TypeCafeRepository;
 use Doctrine\ORM\EntityManagerInterface;
 
 class BaseController extends AbstractController
@@ -39,8 +40,12 @@ class BaseController extends AbstractController
     }
 
     #[Route('/liste-typecafe', name: 'app_liste-typecafe')]
-    public function listeTypecafe(): Response
+    public function listeTypecafe(TypeCafeRepository $cr): Response
     {
-        return $this->render('base/liste-typecafe.html.twig', []);
+        $typecafes = $cr->findAll();
+
+        return $this->render('base/liste-typecafe.html.twig', [
+            'cafes' => $typecafes
+        ]);
     }
 }
